@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/InfoAboutStatus"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/UserDp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-20dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingTop="-5dp" />
+
+        <TextView
+            android:id="@+id/UserTextStatement"
+            android:layout_width="298dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="30dp"
+            android:text="Add Your Status"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#E2E2E2"
+        android:paddingLeft="8dp"
+        android:text="Your Contact Status"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InfoAboutStatus" />
+
+    <TextView
+        android:id="@+id/MessageAboutStatus"
+        android:layout_width="260dp"
+        android:layout_height="139dp"
+        android:gravity="center"
+        android:text="Status Will Be Shown Here"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:fontFamily="@font/aldrich"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/StatusListView"
+        android:layout_width="413dp"
+        android:layout_height="617dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+    </ListView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

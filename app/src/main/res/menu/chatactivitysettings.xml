@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/VideoCamera"
+        android:icon="@drawable/ic_videocam_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="VideoCall"/>
+
+    <item android:id="@+id/Call"
+        android:icon="@drawable/ic_call_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="VoiceCall"/>
+
+    <item android:id="@+id/ViewContact" android:title="View Contact"/>
+    <item android:id="@+id/Media" android:title="Media"/>
+    <item android:id="@+id/SearchInChat" android:title="Search"/>
+    <item android:id="@+id/MuteNotification" android:title="Mute Notification"/>
+    <item android:id="@+id/Wallpaper" android:title="Wallpaper" />
+    <item android:id="@+id/ChangeTextColor" android:title="Change Text Color" />
+
+
+    <item android:id="@+id/More" android:title="More">
+        <menu>
+            <item android:id="@+id/Report" android:title="Report"/>
+            <item android:id="@+id/Block" android:title="Block"/>
+            <item android:id="@+id/ClearChat" android:title="Clear Chat"/>
+            <item android:id="@+id/ExportChat" android:title="Export Chat"/>
+            <item android:id="@+id/AddShortCut" android:title="Add Shortcut"/>
+        </menu>
+    </item>
+
+
+</menu>

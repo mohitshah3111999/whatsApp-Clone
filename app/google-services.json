@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1081245784255",
+    "firebase_url": "https://whatsapp-again-2.firebaseio.com",
+    "project_id": "whatsapp-again-2",
+    "storage_bucket": "whatsapp-again-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081245784255:android:e96fb36a39bc96067c4e0a",
+        "android_client_info": {
+          "package_name": "com.example.whatsappagain2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081245784255-m69lnpo4fj8467e9vqdbj3e012bofb6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.whatsappagain2",
+            "certificate_hash": "676481aa4adb8c96e174968ab9ddb8c86fdb6f9e"
+          }
+        },
+        {
+          "client_id": "1081245784255-un2lj6osujsrigvv6fah7c3q6rdv23mi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTw-NEU2mWkluYXXlL2hzEPmd0id8DNoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081245784255-un2lj6osujsrigvv6fah7c3q6rdv23mi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
