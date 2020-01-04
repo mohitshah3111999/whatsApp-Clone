@@ -9,12 +9,14 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,8 +45,12 @@ public class Fragment_Chats extends Fragment {
         ListView listView = view.findViewById(R.id.listview);
         list = new ArrayList<>();
 
+        TextView textView =  view.findViewById(R.id.GeneralMessage);
+
         names = new ArrayList<>();
         contacts = new ArrayList<>();
+
+        textView.setText("Please Reopen the app to sync contacts");
 
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, MY_CONTACT_REQUEST_CODE);
@@ -52,6 +58,9 @@ public class Fragment_Chats extends Fragment {
             getContactList();
         }
 
+        if(names.size() == 0 && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED){
+            textView.setText("You Have no contacts");
+        }
 
         for(int i=0; i<names.size(); i++){
             list.add(new ItemHolder(R.drawable.manchurian, names.get(i), contacts.get(i)));
