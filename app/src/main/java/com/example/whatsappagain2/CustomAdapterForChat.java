@@ -6,13 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Scroller;
 import android.widget.TextView;
 
 
 import java.util.ArrayList;
-
-import static com.example.whatsappagain2.ChatActivity.currentColor;
 
 public class CustomAdapterForChat extends BaseAdapter {
     ArrayList<String> arrayList;
@@ -42,12 +39,22 @@ public class CustomAdapterForChat extends BaseAdapter {
     @SuppressLint({"ViewHolder", "ResourceAsColor"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.simple_list_item_1, parent, false);
+        int resourceLayout;
+        String message = "";
+        if(arrayList.get(position).contains("->")){
+            resourceLayout = R.layout.left_chat;
+            message = arrayList.get(position).substring(2);
+        }else{
+            resourceLayout = R.layout.right_chat;
+            message = arrayList.get(position);
         }
-        textView = convertView.findViewById(R.id.chatTextView);
-        textView.setTextColor(currentColor);
-        textView.setText(arrayList.get(position));
+        convertView = LayoutInflater.from(context).inflate(resourceLayout, parent, false);
+        if(resourceLayout == R.layout.right_chat) {
+            textView = convertView.findViewById(R.id.right_chat_textview);
+        }else{
+            textView = convertView.findViewById(R.id.left_chat_textview);
+        }
+        textView.setText(message);
         return convertView;
     }
 }

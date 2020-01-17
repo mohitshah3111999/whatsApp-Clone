@@ -18,7 +18,6 @@
     <item android:id="@+id/SearchInChat" android:title="Search"/>
     <item android:id="@+id/MuteNotification" android:title="Mute Notification"/>
     <item android:id="@+id/Wallpaper" android:title="Wallpaper" />
-    <item android:id="@+id/ChangeTextColor" android:title="Change Text Color" />
 
 
     <item android:id="@+id/More" android:title="More">

@@ -38,15 +38,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import yuku.ambilwarna.AmbilWarnaDialog;
-
 public class ChatActivity extends AppCompatActivity {
     ImageView stt;
-    EditText textView;
+    EditText editText;
     String title, finalnum, num;
     int imageId;
     int MY_CALL_REQUEST_CODE = 15;
-    static int currentColor = R.color.Initial_Color;
 //    counter = 0 => mic mode
 //    counter = 1 => send mode
     int counter = 0, ncount=0;
@@ -107,9 +104,6 @@ public class ChatActivity extends AppCompatActivity {
             case R.id.AddShortCut:
                 Toast.makeText(this, "Add ShortCut", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.ChangeTextColor:
-                changeTextColor();
-                return true;
 
 
 //                Icons are below.
@@ -125,6 +119,7 @@ public class ChatActivity extends AppCompatActivity {
                 }else {
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     num = getIntent().getStringExtra("PhoneNo");
+                    assert num != null;
                     finalnum = num.substring(3);
                     intent.setData(Uri.parse("tel:" + finalnum));
                     startActivity(intent);
@@ -135,23 +130,6 @@ public class ChatActivity extends AppCompatActivity {
         return false;
     }
 
-    private void changeTextColor() {
-        AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(this, currentColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
-            @Override
-            public void onCancel(AmbilWarnaDialog dialog) {
-
-            }
-
-            @Override
-            public void onOk(AmbilWarnaDialog dialog, int color) {
-                currentColor = color;
-                sqLiteDatabase.execSQL("update textColor set color = " + currentColor);
-            }
-        });
-        ambilWarnaDialog.show();
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,14 +139,12 @@ public class ChatActivity extends AppCompatActivity {
         imageId = intent.getIntExtra("ContactDp", 0);
         setTitleanddp(title, imageId);
         stt = findViewById(R.id.STT);
-        textView = findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
 
         sqLiteDatabase = this.openOrCreateDatabase("BackGroundChooser", MODE_PRIVATE, null);
         sqLiteDatabase.execSQL("create table if not exists backGround(wall int)");
-        sqLiteDatabase.execSQL("create table if not exists textColor(color int)");
 
         int background = getBackGround(sqLiteDatabase);
-        getTextColor(sqLiteDatabase);
 
         constraintLayout = findViewById(R.id.cLayout);
         constraintLayout.setBackgroundResource(background);
@@ -180,7 +156,7 @@ public class ChatActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
         listView.setDivider(null);
 
-        textView.addTextChangedListener(new TextWatcher() {
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -237,12 +213,12 @@ public class ChatActivity extends AppCompatActivity {
                 }else if(counter == 1){
                     if(ncount == 0){
                         ncount = 1;
-                        messageHistory.add(textView.getText().toString());
+                        messageHistory.add(editText.getText().toString());
                     }else{
-                        messageHistory.add("-> " + textView.getText().toString());
+                        messageHistory.add("-> " + editText.getText().toString());
                         ncount = 0;
                     }
-                    textView.setText(null);
+                    editText.setText(null);
                     listView.smoothScrollToPosition(messageHistory.size());
                     /**
                      * we can use firebase to store the data on cloud.Here we are not going to store any kind of data.
@@ -251,26 +227,6 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void getTextColor(SQLiteDatabase sqLiteDatabase){
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from textColor", null);
-        int colorindex = cursor.getColumnIndex("color");
-        cursor.moveToFirst();
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        try {
-            while (true) {
-                arrayList.add(cursor.getInt(colorindex));
-                cursor.moveToNext();
-            }
-        }catch (Exception e){
-            Log.i("ErrorIs", e.toString());
-        }
-        if(arrayList.size() == 0){
-            sqLiteDatabase.execSQL("insert into textColor values(" + currentColor + ")");
-        }else{
-            currentColor = arrayList.get(0);
-        }
     }
 
     private int getBackGround(SQLiteDatabase sqLiteDatabase) {
@@ -323,7 +279,7 @@ public class ChatActivity extends AppCompatActivity {
                         stt.setForeground(drawable);
                     }
                 }
-                textView.setText(arrayList.get(0));
+                editText.setText(arrayList.get(0));
             }
         }
     }

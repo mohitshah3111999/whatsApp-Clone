@@ -66,9 +66,12 @@ public class Fragment_Chats extends Fragment {
             list.add(new ItemHolder(R.drawable.manchurian, names.get(i), contacts.get(i)));
         }
 
+        if(list.size() != 0){
+            textView.setVisibility(View.INVISIBLE);
+        }
+
         customAdapterForMainScene = new CustomAdapterForMainScene(context, list);
         listView.setAdapter(customAdapterForMainScene);
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -20,10 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.io.IOException;
-import java.net.URI;
 
 import static com.example.whatsappagain2.ChatActivity.constraintLayout;
-import static com.example.whatsappagain2.ChatActivity.currentColor;
 import static com.example.whatsappagain2.ChatActivity.sqLiteDatabase;
 
 public class WallpaperActivity extends AppCompatActivity {
